@@ -1,0 +1,151 @@
+@import 'tailwindcss';
+@import '@heroui/styles';
+
+@theme {
+  --color-earth-dark: #111b14;
+  --color-earth-mid: #1a2e1e;
+  --color-moss-dark: #1f3524;
+  --color-moss-light: #3a6b3e;
+  --color-cream: #f4efe6;
+  --color-cream-dark: #e2d9c8;
+  --color-terra: #c4622a;
+  --color-terra-light: #e07a44;
+  --color-gold: #d4a017;
+  --color-gold-light: #e8bc47;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+}
+
+@layer base {
+  .dark {
+    color-scheme: dark;
+
+    --background: var(--color-earth-dark);
+    --foreground: var(--color-cream);
+
+    --surface: var(--color-moss-dark);
+    --surface-foreground: var(--color-cream);
+
+    --overlay: var(--color-earth-dark);
+    --overlay-foreground: var(--color-cream);
+
+    --muted: color-mix(in srgb, var(--color-cream) 45%, transparent);
+
+    --default: var(--color-moss-dark);
+    --default-foreground: var(--color-cream);
+
+    --accent: var(--color-gold);
+    --accent-foreground: var(--color-earth-dark);
+    --accent-hover: var(--color-gold-light);
+
+    --danger: var(--color-terra);
+    --danger-foreground: var(--color-cream);
+
+    --success: var(--color-moss-light);
+    --success-foreground: var(--color-cream);
+
+    --border: color-mix(in srgb, var(--color-moss-light) 22%, transparent);
+    --border-secondary: color-mix(in srgb, var(--color-moss-light) 14%, transparent);
+    --separator: var(--border);
+
+    --field-background: var(--color-moss-dark);
+    --field-foreground: var(--color-cream);
+    --field-placeholder: color-mix(in srgb, var(--color-cream) 28%, transparent);
+    --field-border: color-mix(in srgb, var(--color-moss-light) 20%, transparent);
+    --field-border-hover: color-mix(in srgb, var(--color-moss-light) 35%, transparent);
+    --field-border-focus: color-mix(in srgb, var(--color-gold) 55%, transparent);
+
+    --focus: var(--color-gold);
+    --link: var(--color-gold);
+
+    --scrollbar-thumb: color-mix(in srgb, var(--color-moss-light) 40%, transparent);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-earth-dark);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+.grain-overlay {
+  position: relative;
+}
+.grain-overlay::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 150px 150px;
+}
+
+.auth-pattern {
+  background-color: var(--color-moss-dark);
+  background-image:
+    radial-gradient(circle at 20% 80%, color-mix(in srgb, var(--color-gold) 8%, transparent) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--color-terra) 8%, transparent) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--color-moss-light) 5%, transparent) 0%, transparent 70%);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease forwards;
+}
+
+.animate-fade-up-delay-1 {
+  animation: fade-up 0.5s 0.1s ease both;
+}
+.animate-fade-up-delay-2 {
+  animation: fade-up 0.5s 0.2s ease both;
+}
+.animate-fade-up-delay-3 {
+  animation: fade-up 0.5s 0.3s ease both;
+}
+.animate-fade-up-delay-4 {
+  animation: fade-up 0.5s 0.4s ease both;
+}
